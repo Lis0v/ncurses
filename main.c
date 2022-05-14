@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <ncurses.h>
 
-void display(void)
+int main()
 {	
 	initscr();
 
@@ -35,10 +35,6 @@ void display(void)
 	refresh();
 	getch();
 	endwin();
-}
 
-int main()
-{
-	display();
 	return 0;
 }
