@@ -1,2 +1,2 @@
 main:
-	gcc main.c -o out -lcurses
+	gcc main.c -o anzeige -lcurses
