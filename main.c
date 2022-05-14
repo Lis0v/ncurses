@@ -26,8 +26,11 @@ void display(void)
 
 	int k=10;
 
+	mvprintw(9, 0, "--------------------------------");
+	mvprintw(19, 0, "--------------------------------");
+
 	for(int j=0;j<9;j++)
-	mvprintw(k++, 0, "%s: %s", index[j], parametry[j]);
+		mvprintw(k++, 0, "%s: %s", index[j], parametry[j]);
 
 	refresh();
 	getch();
