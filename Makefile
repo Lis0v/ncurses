@@ -1,2 +1,2 @@
 main:
-	gcc main.c -o out -lglut -lGLU -lGL
+	gcc main.c -o out -lcurses

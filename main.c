@@ -1,26 +1,41 @@
-#include <GL/glut.h>
-#include <unistd.h>
 #include <stdio.h>
+#include <ncurses.h>
 
 void display(void)
-{
-	glClear(GL_COLOR_BUFFER_BIT);
-	glBegin(GL_TRIANGLES);
-	glVertex3f(0.5, 0, 0);
-	glVertex3f(0, 0.5, 0);
-	glVertex3f(1.0, 0, 0);
-	glEnd();
-	glFlush();
+{	
+	initscr();
+
+	char chiffre[10];
+	char beruf[20];
+	char sort[40];
+	char zeit[40];
+	char aufgaben[100];
+	char alter[5];
+	char beginn[20];
+	char verdienst[20];
+	char kontakt[50];
+
+	char *parametry[9]={chiffre, beruf, sort, zeit, aufgaben, alter, beginn, verdienst, kontakt};
+
+	char *index[9]={"ID-Chiffre", "Beruf", "Arbeitsort", "Arbeitszeit", "Aufgaben", "Alter", "Beginn", "Verdienst", "Kontakt"};
+
+	for(int i=0;i<9;i++){
+	mvprintw(i, 0, "%s: ", index[i]);
+	scanw("%s", parametry[i]);
+	}
+
+	int k=10;
+
+	for(int j=0;j<9;j++)
+	mvprintw(k++, 0, "%s: %s", index[j], parametry[j]);
+
+	refresh();
+	getch();
+	endwin();
 }
 
-int main(int argc, char** argv)
+int main()
 {
-	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE);
-	glutInitWindowSize(400, 300);
-	glutInitWindowPosition(100, 100);
-	glutCreateWindow("nigga");
-	glutDisplayFunc(display);
-	glutMainLoop();
+	display();
 	return 0;
 }
